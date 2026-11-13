@@ -5,15 +5,16 @@ miproyecto/
 ├── public/            ← DocumentRoot de Apache (lo único accesible desde la web)
 │   ├── index.php  crear.php  editar.php  eliminar.php  estado.php
 │   └── assets/estilos.css
-├── src/               ← lógica: conexión PDO, validación, plantillas
-├── sql/               ← schema.sql (tablas) y datos_ejemplo.sql
-├── config/            ← config.example.php (las credenciales reales NO están en Git)
+├── src/app.php        ← conexión a la base de datos, plantilla y formulario
+├── sql/schema.sql     ← tabla de equipos
 ├── scripts/           ← deploy.sh · backup.sh · restore.sh
-├── setup/             ← instalación del servidor, un script por parte del práctico
-└── docs/GUIA.md       ← guía paso a paso y guion de demostración
+└── setup/             ← instalación del servidor, un script por parte del práctico
 ```
 
-## Instalación rápida (en el servidor)
+Las credenciales de la base de datos están en `/etc/miproyecto/config.php` y las de Backblaze en
+`/root/.config/rclone/rclone.conf`, fuera del repositorio.
+
+## Instalación (en el servidor)
 
 ```bash
 sudo bash setup/01_sistema.sh centro-computos     # Parte 1: sistema, SSH, directorios
@@ -26,6 +27,13 @@ sudo bash setup/07_respaldos_cron.sh              # Parte 7: backup.sh + crontab
 sudo bash setup/08_backblaze_rclone.sh            # Parte 8: Backblaze B2 + Rclone
 ```
 
+Demostración de la Parte 2:
+
+```bash
+sudo bash setup/02_demo_gestion_usuarios.sh       # crear, modificar, bloquear y eliminar un usuario
+sudo bash setup/02_verificar_permisos.sh          # a qué puede acceder cada usuario
+```
+
 Operación diaria:
 
 ```bash
@@ -34,5 +42,3 @@ sudo backup.sh                          # respaldo manual (local + Backblaze B2)
 sudo restore.sh --listar --nube         # respaldos disponibles en la nube
 sudo restore.sh --nube ultimo           # recupera archivos y base desde la nube
 ```
-
-Ver **[docs/GUIA.md](docs/GUIA.md)** para el detalle de cada parte.

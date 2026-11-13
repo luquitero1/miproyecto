@@ -1,7 +1,3 @@
--- Inventario de Equipos — estructura de la base de datos.
--- Se ejecuta sobre la base "miproyecto" (la crea setup/05_base_datos.sh).
--- Es idempotente: puede volver a ejecutarse sin perder datos.
-
 CREATE TABLE IF NOT EXISTS equipos (
     id             INT UNSIGNED  NOT NULL AUTO_INCREMENT,
     codigo         VARCHAR(20)   NOT NULL,
@@ -17,7 +13,5 @@ CREATE TABLE IF NOT EXISTS equipos (
     creado_en      TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     actualizado_en TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    UNIQUE KEY uk_equipos_codigo (codigo),
-    KEY idx_equipos_estado (estado),
-    KEY idx_equipos_tipo (tipo)
+    UNIQUE KEY uk_equipos_codigo (codigo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -1,20 +1,5 @@
-# Credenciales y configuración local: NUNCA subir a GitHub
-config/config.php
-.env
-*.cnf
+config.php
 rclone.conf
-*.key
-*.pem
-
-# Respaldos, volcados y logs
 *.tar.gz
 *.sha256
-*.sql.gz
 *.log
-respaldos/
-
-# Editor / sistema
-.vscode/
-.idea/
-*.swp
-.DS_Store
