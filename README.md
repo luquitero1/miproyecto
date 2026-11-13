@@ -1,17 +1,3 @@
-# Inventario de Equipos — Centro de Cómputos
-
-Aplicación web en **PHP + MariaDB** para registrar los equipos informáticos de un
-centro de cómputos. Se publica con **Apache** en `http://miproyecto.com` y es parte del
-práctico final de *Administración de Sistemas* (Debian/Ubuntu, sin Docker).
-
-| Funcionalidad | Página |
-|---|---|
-| Inventario con resumen por estado, búsqueda y filtros | `/` |
-| Registrar un equipo (formulario con validación) | `/crear.php` |
-| Modificar un equipo | `/editar.php?id=N` |
-| Eliminar un equipo (con confirmación) | botón *Eliminar* |
-| Verificación de Apache + PHP + base de datos | `/estado.php` |
-
 ## Estructura
 
 ```
@@ -50,14 +36,3 @@ sudo restore.sh --nube ultimo           # recupera archivos y base desde la nube
 ```
 
 Ver **[docs/GUIA.md](docs/GUIA.md)** para el detalle de cada parte.
-
-## Seguridad
-
-- Las credenciales **no se publican**: la app lee `/etc/miproyecto/config.php`
-  (640 `root:www-data`, generado con contraseña aleatoria) y las claves de Backblaze
-  están en `/root/.config/rclone/rclone.conf` (600). `.gitignore` excluye configuraciones,
-  respaldos y logs.
-- Consultas preparadas (PDO), escape de HTML, token CSRF en todos los formularios
-  y eliminación sólo por POST.
-- El usuario de base de datos de la app sólo tiene `SELECT, INSERT, UPDATE, DELETE`.
-- Apache sólo expone `public/`; `.git`, `src/`, `sql/` y `scripts/` no son accesibles.
