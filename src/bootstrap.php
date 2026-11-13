@@ -6,7 +6,7 @@
 declare(strict_types=1);
 
 const APP_NOMBRE  = 'Inventario de Equipos';
-const APP_VERSION = '1.0.0';
+const APP_VERSION = '1.1.0';
 const APP_ROOT    = __DIR__ . '/..';
 
 /** Tipos y estados válidos para un equipo. */

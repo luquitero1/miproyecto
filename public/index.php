@@ -42,6 +42,10 @@ cabecera('Inventario', 'inicio');
     <a class="boton" href="/crear.php">+ Registrar equipo</a>
 </section>
 
+<div class="aviso aviso--ok" role="note">
+    Versión 1.1.0: actualizada desde GitHub mediante <code>deploy.sh</code>.
+</div>
+
 <section class="resumen">
     <div class="dato"><span class="dato__valor"><?= $total ?></span><span class="dato__etiqueta">Equipos registrados</span></div>
     <?php foreach (ESTADOS_EQUIPO as $est): ?>
