@@ -16,6 +16,10 @@ GRUPO_DEV="desarrolladores"
 GRUPO_BACKUP="respaldos"
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+# apt sin preguntas: conserva los archivos de configuración ya modificados
+export DEBIAN_FRONTEND=noninteractive
+APT=(apt-get -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold)
+
 # --- Salida con formato -----------------------------------------------------------
 if [[ -t 1 ]]; then
     C_AZUL=$'\e[1;34m'; C_VERDE=$'\e[1;32m'; C_AMARILLO=$'\e[1;33m'; C_ROJO=$'\e[1;31m'; C_NEGRITA=$'\e[1m'; C_FIN=$'\e[0m'

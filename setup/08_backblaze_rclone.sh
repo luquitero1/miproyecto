@@ -28,7 +28,7 @@ export RCLONE_CONFIG="$RCLONE_CONF"   # rclone usa siempre la configuración de 
 [[ -f "$CONF" ]] || morir "Falta $CONF (ejecutar antes 07_respaldos_cron.sh)"
 
 titulo "1. Instalación de Rclone"
-ejecutar apt-get install -y rclone
+ejecutar "${APT[@]}" install rclone
 ejecutar rclone version
 
 titulo "2. Credenciales de Backblaze B2"

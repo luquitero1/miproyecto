@@ -10,7 +10,18 @@ proyecto (`cd ~/Sistemas/miproyecto`), salvo que se indique otra cosa.
 
 ## 0. Antes de empezar
 
-### Orden de ejecución
+### Instalación en un solo paso
+
+```bash
+sudo bash setup/instalar_todo.sh centro-computos   # desactiva Docker y ejecuta las partes 1 a 7
+sudo bash setup/08_backblaze_rclone.sh             # parte 8 (pide las credenciales de Backblaze)
+```
+
+El instalador clona desde el remoto `origin` de este repositorio (GitHub), deja todo
+registrado en `/var/log/miproyecto/instalacion.log` y se puede volver a ejecutar si algo se
+corta. Para la presentación igual conviene conocer cada script por separado:
+
+### Orden de ejecución (scripts individuales)
 
 | Paso | Comando | Parte del práctico |
 |---|---|---|

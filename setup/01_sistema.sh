@@ -47,20 +47,20 @@ if getent hosts deb.debian.org > /dev/null; then ok "La resolución DNS funciona
 titulo "3. Actualización del sistema operativo"
 export DEBIAN_FRONTEND=noninteractive
 ejecutar apt-get update
-ejecutar apt-get -y full-upgrade
-ejecutar apt-get -y autoremove
+ejecutar "${APT[@]}" full-upgrade
+ejecutar "${APT[@]}" autoremove
 
 # --- Herramientas -------------------------------------------------------------
 titulo "4. Herramientas de administración"
 HERRAMIENTAS=(sudo curl wget vim nano htop tree net-tools dnsutils iputils-ping traceroute
               rsync zip unzip acl lsof sysstat bash-completion ca-certificates cron git logrotate)
-ejecutar apt-get install -y "${HERRAMIENTAS[@]}"
+ejecutar "${APT[@]}" install "${HERRAMIENTAS[@]}"
 ejecutar systemctl enable --now cron
 ok "Herramientas instaladas"
 
 # --- SSH ----------------------------------------------------------------------
 titulo "5. OpenSSH Server"
-ejecutar apt-get install -y openssh-server
+ejecutar "${APT[@]}" install openssh-server
 cat > /etc/ssh/sshd_config.d/10-centro-computos.conf <<'EOF'
 # Configuración del centro de cómputos (Parte 1 del práctico)
 PermitRootLogin no

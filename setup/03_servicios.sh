@@ -15,7 +15,7 @@ titulo "1. Instalación de paquetes"
 PAQUETES=(apache2 php libapache2-mod-php php-cli php-mysql php-mbstring
           mariadb-server mariadb-client git openssh-server curl)
 ejecutar apt-get update
-ejecutar apt-get install -y "${PAQUETES[@]}"
+ejecutar "${APT[@]}" install "${PAQUETES[@]}"
 
 # --- Docker / puerto 3306 -------------------------------------------------------
 titulo "2. Comprobación de conflictos"
